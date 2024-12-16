@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pipe <pipe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: dbonilla <dbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 01:45:50 by pipe              #+#    #+#             */
-/*   Updated: 2024/12/16 01:47:41 by pipe             ###   ########.fr       */
+/*   Updated: 2024/12/16 19:07:23 by dbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,14 @@ int main() {
     while (diamond1.getHitPoints() > 0 && diamond2.getHitPoints() > 0) {
         std::cout << "\n--- Ronda " << round << " ---" << std::endl;
 
-        // Diamond 1 ataca
         diamond1.attack(diamond2.getname());
         diamond2.takeDamage(diamond1.getTakeDamage());
 
-        // Si Diamond 2 sobrevive, contraataca
         if (diamond2.getHitPoints() > 0) {
             diamond2.attack(diamond1.getname());
             diamond1.takeDamage(diamond2.getTakeDamage());
         }
 
-        // Reparaciones si la salud es baja
         if (diamond1.getHitPoints() <= 20 && diamond1.getEnergyPoints() > 0) {
             diamond1.beReapaired(10);
         }
